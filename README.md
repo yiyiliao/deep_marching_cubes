@@ -1,7 +1,7 @@
 # Deep Marching Cubes
 This repo contains training and testing code for "Deep Marching Cubes: Learning Explicit Surface Representations". More information about the project can be found in our [paper](http://www.cvlibs.net/publications/Liao2018CVPR.pdf), [suppmat](http://www.cvlibs.net/publications/Liao2018CVPR_supplementary.pdf) and [project website](https://avg.is.tue.mpg.de/research_projects/deep-marching-cubes).
 
-![teaser](https://avg.is.tue.mpg.de/uploads/research_project/image/158/project_teaser.pdf)
+![teaser](teaser/project_teaser.pdf)
 
 If you find our code helpful, please cite:
 
@@ -28,10 +28,8 @@ For experiments on 3D ShapeNet, please download the data used in the paper in [h
 
 Training with toy data at a low resolution (grid size 8x8x8):
 
-    ```
     cd marching_cube
     python train.py
-    ```
 
 where the points are sampled from ellipsoids.
 
@@ -44,9 +42,7 @@ Here are some scripts in the `marching_cube` folder for reimplementing our 3D sh
 
 Training with ShapeNet data for reimplementing the experiment in the paper (grid size 32x32x32). Please change the `$DATA_DIR` below to where the downloaded data located.
 
-	```
-        ./train.sh point $DATA_DIR $OUTPUT_DIR
-        ```
+    ./train.sh point $DATA_DIR $OUTPUT_DIR
 
 During training, the visualization results will be saved in ```$OUTPUT_DIR``` in .png format for debugging
 
@@ -54,9 +50,7 @@ During training, the visualization results will be saved in ```$OUTPUT_DIR``` in
 
 For validation, we first save the predicted mesh and then evaluate the mesh-to-mesh distance:
 
-	```
-        ./val.sh point $DATA_DIR $OUTPUT_DIR $MODEL_FILE
-        ```
+    ./val.sh point $DATA_DIR $OUTPUT_DIR $MODEL_FILE
 
 During validation, the predicted mesh will be saved in .off files, the 2D visualization results are skipped for efficiency consideration.
 
@@ -66,17 +60,13 @@ During validation, the predicted mesh will be saved in .off files, the 2D visual
 
 Similarly, we can train the network taking binary occupancy grid as input:
 
-	```
-        ./train.sh voxel $DATA_DIR $OUTPUT_DIR
-        ```
+    ./train.sh voxel $DATA_DIR $OUTPUT_DIR
 
 ### Validation
 
 Run the validation phase:
 
-	```
-        ./val.sh voxel $DATA_DIR $OUTPUT_DIR $MODEL_FILE
-        ```
+    ./val.sh voxel $DATA_DIR $OUTPUT_DIR $MODEL_FILE
 
 
 ## License
