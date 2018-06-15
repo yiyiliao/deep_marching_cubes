@@ -1,7 +1,7 @@
 # Deep Marching Cubes
 This repo contains training and testing code for "Deep Marching Cubes: Learning Explicit Surface Representations". More information about the project can be found in our [paper](http://www.cvlibs.net/publications/Liao2018CVPR.pdf), [suppmat](http://www.cvlibs.net/publications/Liao2018CVPR_supplementary.pdf) and [project website](https://avg.is.tue.mpg.de/research_projects/deep-marching-cubes).
 
-![teaser](teaser/project_teaser.pdf)
+![teaser](teaser/project_teaser.jpg)
 
 If you find our code helpful, please cite:
 
