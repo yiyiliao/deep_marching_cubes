@@ -1,0 +1,12 @@
+# Python tmp files
+*.py[cod]
+
+# Configuration file
+*.ini
+
+# Static object
+*.o
+*.so
+
+# extension directory
+**/_ext/**

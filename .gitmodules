@@ -1,0 +1,3 @@
+[submodule "tools/mesh-evaluation"]
+	path = tools/mesh-evaluation
+	url = https://github.com/davidstutz/mesh-evaluation.git

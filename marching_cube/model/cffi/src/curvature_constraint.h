@@ -1,0 +1,2 @@
+int curvature_constraint_forward(THFloatTensor *offset, THFloatTensor *topology, THFloatTensor *topology_empty, THFloatTensor *xTable, THFloatTensor *yTable, THFloatTensor *zTable, THFloatTensor *innerTable, THFloatTensor *loss );
+int curvature_constraint_backward(THFloatTensor *grad_output, THFloatTensor *offset, THFloatTensor *topology, THFloatTensor *topology_empty, THFloatTensor *xTable, THFloatTensor *yTable, THFloatTensor *zTable, THFloatTensor *innerTable, THFloatTensor *grad_offset );

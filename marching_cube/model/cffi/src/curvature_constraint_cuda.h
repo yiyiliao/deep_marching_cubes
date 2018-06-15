@@ -1,0 +1,2 @@
+int curvature_constraint_cuda_forward(THCudaTensor *offset, THCudaTensor *topology, THCudaTensor *topology_empty, THCudaTensor *xTable, THCudaTensor *yTable, THCudaTensor *zTable, THCudaTensor *innerTable, THCudaTensor *loss );
+int curvature_constraint_cuda_backward(THCudaTensor *grad_output, THCudaTensor *offset, THCudaTensor *topology, THCudaTensor *topology_empty, THCudaTensor *xTable, THCudaTensor *yTable, THCudaTensor *zTable, THCudaTensor *innerTable, THCudaTensor *grad_offset );
