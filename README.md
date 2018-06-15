@@ -6,7 +6,7 @@ This repo contains training and testing code for "Deep Marching Cubes: Learning 
 If you find our code helpful, please cite:
 
 	@INPROCEEDINGS{Liao2018CVPR,
-  		author = {Yiyi Liao and Simon Donne and Andreas Geiger},
+  		author = {Yiyi Liao and Simon Donn\'{e} and Andreas Geiger},
   		title = {Deep Marching Cubes: Learning Explicit Surface Representations},
   		booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},
   		year = {2018}
@@ -16,13 +16,17 @@ If you find our code helpful, please cite:
 
 ## Installation
  
-* __pytorch__, 0.3.0 (incompatible with 0.4.0)
+* pytorch, 0.3.0 (incompatible with 0.4.0)
 * Build the C/Cuda extensions of pytorch with ```./build.sh```. Please add the cuda bin folder to the PATH variable if the Cuda extensions are needed.
-* For evaluating the mesh-to-mesh distance, please check `tool/mesh-evaluation/README.md` and build the tool.
+* For evaluating the mesh-to-mesh distance, please check `tool/mesh-evaluation/README.md` and build the evaluation tool.
 
 
 ## Data
-For experiments on 3D ShapeNet, please download the data used in the paper in [http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip](http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip). Unzip the data into a folder named `$DATA_DIR`.
+For experiments on 3D ShapeNet, please download the data used in the paper in [http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip](http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip) including:
+
+* Point cloud input for training and validation, also utilized for supervision
+* Volumetric input for training and validation
+* Ground truth mesh of the validation samples 
 
 ## Quick training demo
 
@@ -36,7 +40,7 @@ where the points are sampled from ellipsoids.
 
 ## 3D Shape Prediction from Point Cloud 
 
-Here are some scripts in the `marching_cube` folder for reimplementing our 3D shape prediction experiments.
+There are some scripts in the `marching_cube` folder for reimplementing our 3D shape prediction experiments.
 
 ### Train
 
@@ -44,7 +48,7 @@ Training with ShapeNet data for reimplementing the experiment in the paper (grid
 
     ./train.sh point $DATA_DIR $OUTPUT_DIR
 
-During training, the visualization results will be saved in ```$OUTPUT_DIR``` in .png format for debugging
+During training, the visualization results will be saved in ```$OUTPUT_DIR``` in .png format for debugging.
 
 ### Validation
 
@@ -52,7 +56,7 @@ For validation, we first save the predicted mesh and then evaluate the mesh-to-m
 
     ./val.sh point $DATA_DIR $OUTPUT_DIR $MODEL_FILE
 
-During validation, the predicted mesh will be saved in .off files, the 2D visualization results are skipped for efficiency consideration.
+During validation, the predicted mesh will be saved as .off files, the 2D visualization results are skipped for efficiency consideration.
 
 ## 3D Shape Prediction from Occupancy Grid
 
