@@ -5,7 +5,7 @@ set -e
 echo ================================
 echo Builing 3D c extensions...
 echo ================================
-cd dmc/model/cffi
+cd marching_cube/model/cffi
 python build.py
 
 echo ================================

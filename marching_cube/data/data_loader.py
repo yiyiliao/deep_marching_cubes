@@ -2,7 +2,6 @@ import numpy as np
 from ellipsoid import Ellipsoid
 from cube import Cube
 import os
-import h5py
 import torch
 from torch.autograd import Variable
 

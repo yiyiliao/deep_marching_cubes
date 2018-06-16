@@ -781,7 +781,6 @@ __global__ void update_empty_topology(float *distances, const int T){
   int j = blockIdx.y;
   int k = blockIdx.z;
   // cell size
-  int Wc = gridDim.x;
   int Hc = gridDim.y;
   int Dc = gridDim.z;
   int ind = i*Hc*Dc + j*Dc + k;

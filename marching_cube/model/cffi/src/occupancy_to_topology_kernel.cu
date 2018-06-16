@@ -289,7 +289,7 @@ __constant__ int vertexTable[8][3]={ {0, 1, 0},
  * parallel over every cell and every topology
  */
 __global__ void occupancy_to_topology_kernel(const float *occupancy, float *topology){
-  int W = gridDim.x;
+  // int W = gridDim.x;
   int H = gridDim.y;
   int D = gridDim.z;
 
@@ -321,7 +321,7 @@ __global__ void occupancy_to_topology_kernel(const float *occupancy, float *topo
  * parallel over every cell and every topology
  */
 __global__ void grad_occupancy_to_topology_kernel(const float *grad_output, const float *occupancy, float *topology, float *grad_occupancy){
-  int W = gridDim.x;
+  // int W = gridDim.x;
   int H = gridDim.y;
   int D = gridDim.z;
 

@@ -6,8 +6,6 @@
 extern "C" {
 #endif
 
-const float eps=1e-8;
-
 __constant__ float grid_size=1.0;
 
 
@@ -22,7 +20,7 @@ __global__ void grid_pooling_kernel( const float *point, const float *feat_point
   int j = blockIdx.y;
   int k = blockIdx.z;
   // cell size
-  int W = gridDim.x;
+  // int W = gridDim.x;
   int H = gridDim.y;
   int D = gridDim.z;
   int ind = i*H*D + j*D + k;
@@ -57,7 +55,7 @@ __global__ void grad_grid_pooling_kernel( const float *grad_output, const long i
   int j = blockIdx.y;
   int k = blockIdx.z;
   // cell size
-  int W = gridDim.x;
+  // int W = gridDim.x;
   int H = gridDim.y;
   int D = gridDim.z;
   int ind = i*H*D + j*D + k;

@@ -497,12 +497,6 @@ __device__ void offset_to_normals(const float *offset, const int W, const int H,
 
 	  // location > 5 means inner case instead of x, y, z direction
 	  if (location>5 ||  (location <=5 && inter_ind[0]>-1 && inter_ind[1]>-1 && inter_ind[2]==-1) ){
-	    // get the non-intersected point
-	    int non_inter;
-	    for (int k = 0; k<3; k++){
-	       if (triangle[k]!=inter_ind[0] && triangle[k]!=inter_ind[1]) 
-	         non_inter = triangle[k];
-	    }
 	
 	    // consider inside/outside, then the direction of the normal vector 
 	    // decided by the look-up-table
@@ -582,12 +576,6 @@ __device__ void grad_normal_to_offset(float *grad_offset, const float *grad_norm
 
 	  // location > 5 means inner case instead of x, y, z direction
 	  if (location>5 ||  (location <=5 && inter_ind[0]>-1 && inter_ind[1]>-1 && inter_ind[2]==-1) ){
-	    // get the non-intersected point
-	    int non_inter;
-	    for (int k = 0; k<3; k++){
-	       if (triangle[k]!=inter_ind[0] && triangle[k]!=inter_ind[1]) 
-	         non_inter = triangle[k];
-	    }
 
 	    // consider inside/outside, then the direction of the normal vector 
 	    // decided by the look-up-table

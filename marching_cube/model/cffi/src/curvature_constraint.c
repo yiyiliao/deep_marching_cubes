@@ -102,12 +102,6 @@ void offset_to_normals(THFloatTensor *normal, THFloatTensor *offset, int i_, int
 
 	  // location > 5 means inner loss case instead of x, y, z direction
 	  if ( location>5 || ( location <=5 && inter_ind[0]>-1 && inter_ind[1]>-1 && inter_ind[2]==-1) ){
-	    // get the non-intersected point
-	    int non_inter;
-	    for (int k = 0; k<3; k++){
-	       if (triangle[k]!=inter_ind[0] && triangle[k]!=inter_ind[1]) 
-	         non_inter = triangle[k];
-	    }
 
 	    // when there is inside/outside information, 
 	    // we should directly take the order defined by the look-up-table
@@ -299,12 +293,6 @@ void grad_normal_to_offset(THFloatTensor *grad_offset, THFloatTensor *grad_norma
 
 	  // location > 5 means inner loss case instead of x, y, z direction
 	  if ( location>5 || ( location <=5 && inter_ind[0]>-1 && inter_ind[1]>-1 && inter_ind[2]==-1) ){
-	    // get the non-intersected point
-	    int non_inter;
-	    for (int k = 0; k<3; k++){
-	       if (triangle[k]!=inter_ind[0] && triangle[k]!=inter_ind[1]) 
-	         non_inter = triangle[k];
-	    }
 
 	    // when there is inside/outside information, 
 	    // we should directly take the order defined by the look-up-table
@@ -662,10 +650,11 @@ void pairwise_grad(THFloatTensor *offset, THFloatTensor *topology, THFloatTensor
  */	
 int curvature_constraint_forward(THFloatTensor *offset, THFloatTensor *topology, THFloatTensor *topology_empty, THFloatTensor *xTable, THFloatTensor *yTable, THFloatTensor *zTable, THFloatTensor *innerTable, THFloatTensor *loss )
 {
-  long int W = THFloatTensor_size(offset, 1) - 1;
-  long int H = THFloatTensor_size(offset, 2) - 1;
-  long int D = THFloatTensor_size(offset, 3) - 1;
-  long int T = THFloatTensor_size(topology, 1);
+  int C = THFloatTensor_size(offset, 0);
+  int W = THFloatTensor_size(offset, 1) - 1;
+  int H = THFloatTensor_size(offset, 2) - 1;
+  int D = THFloatTensor_size(offset, 3) - 1;
+  int T = THFloatTensor_size(topology, 1);
   // data format check
   if (THFloatTensor_nDimension(offset)!=4 || THFloatTensor_nDimension(topology)!=2 || THFloatTensor_nDimension(xTable)!=2  || THFloatTensor_nDimension(yTable)!=2 || THFloatTensor_nDimension(zTable)!=2 || THFloatTensor_nDimension(loss)!=1 ){
     printf("Invalid nDimension!\n");
@@ -674,12 +663,12 @@ int curvature_constraint_forward(THFloatTensor *offset, THFloatTensor *topology,
   }
   if (THFloatTensor_size(offset, 0)!=3 ){
     printf("Invalid shape!\n");
-    printf("Expected 3xWxHxD, received %dx%dx%dx%d\n", THFloatTensor_size(offset, 0), THFloatTensor_size(offset,1), THFloatTensor_size(offset, 2), THFloatTensor_size(offset, 3));
+    printf("Expected 3xWxHxD, received %dx%dx%dx%d\n", C, W+1, H+1, D+1);
     return 0;
   }
-  if (THFloatTensor_size(topology,0)!=(W*H*D) || THFloatTensor_size(topology,1)!=T ){
+  if (THFloatTensor_size(topology,0)!=(W*H*D)){
     printf("Invalid shape!\n");
-    printf("Expected %dx%d, received %dx%d\n",  W*H*D, T, THFloatTensor_size(topology, 0), THFloatTensor_size(topology,1));
+    printf("Expected %dx%d, received %dx%d\n",  W*H*D, T, (int)THFloatTensor_size(topology, 0), T);
     return 0;
   }
   if (THFloatTensor_size(xTable,0)!=T || THFloatTensor_size(xTable,1)!=T ){
