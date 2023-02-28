@@ -22,7 +22,7 @@ If you find our code helpful, please cite:
 
 
 ## Data
-For experiments on 3D ShapeNet, please download the data used in the paper in [http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip](http://www.cvlibs.net/download.php?file=deep_marching_cubes_data.zip) including:
+For experiments on 3D ShapeNet, please download the [data](https://s3.eu-central-1.amazonaws.com/avg-projects/deep_marching_cubes_data.zip) used in the paper including:
 
 * Point cloud input for training and validation, also utilized for supervision
 * Volumetric input for training and validation
